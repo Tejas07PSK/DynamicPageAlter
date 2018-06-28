@@ -41,4 +41,24 @@ public class RelationServlet extends HttpServlet
         @SuppressWarnings("unused")
         private static String ipadd = "" ;
 
+        @Override
+        public void init()
+        {
+
+                if(conn == null)
+                        startDBConnection();
+                try
+                {
+                        System.setProperty("java.net.preferIPv4Stack", "true");
+                        ip = InetAddress.getLocalHost();
+                        ipadd = ip.getHostAddress();
+                }catch (UnknownHostException e)
+                {
+                        e.printStackTrace();
+                }
+
+        }
+
+        
+
 }
