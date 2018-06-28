@@ -9,12 +9,12 @@
 
     </welcome-file-list>
 
-    <servlet>
+    <!-- <servlet>
         <servlet-name>none</servlet-name>
         <servlet-class>none</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>none</servlet-name>
         <url-pattern>none</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> -->
 </web-app>
