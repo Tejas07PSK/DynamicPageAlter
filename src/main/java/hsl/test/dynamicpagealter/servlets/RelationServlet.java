@@ -34,6 +34,11 @@ import java.net.UnknownHostException;
 public class RelationServlet extends HttpServlet
 {
 
-        
+        private static final long serialVersionUID = 1L;
+        private static Connection conn = null;
+        private static InetAddress ip ;
+
+        @SuppressWarnings("unused")
+        private static String ipadd = "" ;
 
 }
