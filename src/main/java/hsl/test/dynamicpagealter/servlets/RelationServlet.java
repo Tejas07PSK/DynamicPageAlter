@@ -15,5 +15,25 @@
 
 package hsl.test.dynamicpagealter.servlets;
 
-public class RelationServlet {
+import java.io.*;
+import java.sql.*;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Random;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+@WebServlet(description = "Servlet for managing tables on RDBMS", urlPatterns = { "/relServlet" })
+public class RelationServlet extends HttpServlet
+{
+
+        
+
 }
