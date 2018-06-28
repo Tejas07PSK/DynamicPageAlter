@@ -107,6 +107,18 @@ public class RelationServlet extends HttpServlet
 
         }
 
+        private static void stopDBConnection()
+        {
 
+                try
+                {
+                        conn.close();
+                }catch(SQLException se)
+                {
+                        se.printStackTrace();
+                }
+                conn = null;
+
+        }
 
 }
