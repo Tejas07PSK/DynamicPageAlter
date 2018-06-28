@@ -59,6 +59,54 @@ public class RelationServlet extends HttpServlet
 
         }
 
-        
+        private static void startDBConnection()
+        {
+
+                final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+                final String DB_URL = "jdbc:mysql://"+ipadd+":3306/coudApp";
+
+                final String USER = "palashsarkaradmin";
+                final String PASS = "tejas!!";
+
+                try
+                {
+
+                        Class.forName(JDBC_DRIVER).newInstance();
+                        System.out.println("Connecting to database...");
+                        conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+                }
+                catch(SQLException se)
+                {
+
+                        se.printStackTrace();
+                        conn = null;
+
+                }
+                catch(Exception e)
+                {
+
+                        e.printStackTrace();
+                        conn = null;
+
+                }
+                finally
+                {
+
+                        if(conn != null)
+                                System.out.println("Connection Successful!!");
+                        else
+                        {
+
+                                System.out.println("Connection Unsuccessful!!");
+                                stopDBConnection();
+
+                        }
+
+                }
+
+        }
+
+
 
 }
