@@ -48,7 +48,9 @@ public class Table implements Serializable
 
                 for(String var : col_nms_typs)
                 {
+
                         row_nm_typ.put((var.split("-"))[0], (var.split("-"))[1]);
+
                 }
 
         }
@@ -85,7 +87,21 @@ public class Table implements Serializable
         {
 
                 row_nm_typ.clear();
-                
+
+        }
+
+        public boolean checkIfKeyExists(String key)
+        {
+
+                return (row_nm_typ.containsKey(key));
+
+        }
+
+        public boolean checkIfValueExists(String val)
+        {
+
+                return (row_nm_typ.containsValue(val));
+
         }
 
 }
