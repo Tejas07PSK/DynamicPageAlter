@@ -91,7 +91,7 @@ public class Table implements Serializable
 
         }
 
-        public boolean checkIfKeyExists(String key)
+        private boolean checkIfKeyExists(String key)
         {
 
                 return (row_nm_typ.containsKey(key));
@@ -107,6 +107,7 @@ public class Table implements Serializable
 
         public String getValueForKey(String key)
         {
+
                 if (checkIfKeyExists(key))
                         return (row_nm_typ.get(key));
                 else
