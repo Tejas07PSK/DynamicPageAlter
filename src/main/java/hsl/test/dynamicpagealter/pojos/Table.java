@@ -123,15 +123,24 @@ public class Table implements Serializable
         {
 
                 row_nm_typ.put(key, val);
-                System.out.println("Key-Value Pair Successfully Inserted!!");
+                System.out.println("Key-Value pair successfully inserted!!");
 
         }
 
         public void deleteEntryInHsmp(String key, String val)
         {
 
-                row_nm_typ.remove(key, val);
-                System.out.println("Entry Successfully Removed from Hash-Map!!");
+                if (row_nm_typ.remove(key, val))
+                        System.out.println("Entry successfully removed from Hash-Map!!");
+                else
+                        System.out.println("Entry not found, couldnot remove Key-Value pair!!");
+
+        }
+
+        public void modifyEntryInHsmp(String key)
+        {
+
+                row_nm_typ.replace()
 
         }
 
