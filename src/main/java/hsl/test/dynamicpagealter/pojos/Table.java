@@ -81,4 +81,11 @@ public class Table implements Serializable
 
         }
 
+        public void emptyHshmp()
+        {
+
+                row_nm_typ.clear();
+                
+        }
+
 }
