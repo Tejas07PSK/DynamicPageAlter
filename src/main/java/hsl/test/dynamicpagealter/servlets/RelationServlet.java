@@ -96,13 +96,14 @@ public class RelationServlet extends HttpServlet
         private boolean createTable(String sql)
         {
 
+                boolean stat = false;
                 Statement smt = null;
                 try
                 {
                         smt = conn.createStatement();
                         smt.executeUpdate(sql);
-                        smt.close();
                         System.out.println("Created table in given database...");
+                        stat = true;
                 }
                 catch(SQLException se)
                 {
@@ -126,6 +127,7 @@ public class RelationServlet extends HttpServlet
                             se2.printStackTrace();
                     }
                 }
+                return (stat);
 
         }
 
