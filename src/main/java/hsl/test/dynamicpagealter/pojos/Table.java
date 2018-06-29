@@ -24,22 +24,16 @@ public class Table implements Serializable
 {
 
         private static final long serialVersionUID = 1L;
+        private static Table sing_obj = null;
 
-        private final String tab_name;
-        private final HashMap<String, String> row_nm_typ = new HashMap <> ();
+        private String tab_name;
+        private final HashMap<String, String> row_nm_typ;
 
-        private Table(String tb)
+        private Table()
         {
 
-            tab_name = tb;
-
-        }
-
-        public Table(String tb, String [] col_nms_typs)
-        {
-
-            this(tb);
-            fillHashMap(col_nms_typs);
+            tab_name = "";
+            row_nm_typ = new HashMap <> ();
 
         }
 
@@ -52,6 +46,15 @@ public class Table implements Serializable
                         row_nm_typ.put((var.split("-"))[0], (var.split("-"))[1]);
 
                 }
+
+        }
+
+        public Table getSing_obj()
+        {
+
+                if (sing_obj == null)
+                        sing_obj = new Table();
+                return (sing_obj);
 
         }
 
