@@ -53,12 +53,16 @@ public class RelationServlet extends HttpServlet
                         startDBConnection();
                 try
                 {
+
                         System.setProperty("java.net.preferIPv4Stack", "true");
                         ip = InetAddress.getLocalHost();
                         ipadd = ip.getHostAddress();
+
                 }catch (UnknownHostException e)
                 {
+
                         e.printStackTrace();
+
                 }
 
         }
@@ -66,6 +70,7 @@ public class RelationServlet extends HttpServlet
         @Override
         protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
         {
+
                 response.setContentType ("text");
                 response.setCharacterEncoding ("UTF-8");
                 response.setBufferSize (8192);
@@ -80,17 +85,21 @@ public class RelationServlet extends HttpServlet
                 Iterator i = (tab.getEntries()).iterator();
                 while (i.hasNext())
                 {
+
                         Map.Entry me = (Map.Entry)i.next();
                         query.append(me.getKey());
                         query.append(me.getValue());
                         query.append(",");
+
                 }
                 query.append("PRIMARY KEY ( id ))");
-
-                out.print ();
-
+                if (createTable(query.toString()))
+                        out.print ("Table successfully created!!");
+                else
+                        out.print ("Failed to create table!!");
                 out.flush ();
                 out.close ();
+
         }
 
         private boolean createTable(String sql)
@@ -100,32 +109,44 @@ public class RelationServlet extends HttpServlet
                 Statement smt = null;
                 try
                 {
+
                         smt = conn.createStatement();
                         smt.executeUpdate(sql);
                         System.out.println("Created table in given database...");
                         stat = true;
+
                 }
                 catch(SQLException se)
                 {
+
                         se.printStackTrace();
                         System.out.println("ERROR!!!");
+
                 }
                 catch(Exception e)
                 {
+
                         e.printStackTrace();
                         System.out.println("ERROR!!!");
+
                 }
                 finally
                 {
-                    try
-                    {
-                            if(smt!=null)
-                            smt.close();
-                    }
-                    catch(SQLException se2)
-                    {
-                            se2.printStackTrace();
-                    }
+
+                        try
+                        {
+
+                                if(smt!=null)
+                                   smt.close();
+
+                        }
+                        catch(SQLException se2)
+                        {
+
+                                se2.printStackTrace();
+
+                        }
+
                 }
                 return (stat);
 
@@ -184,10 +205,14 @@ public class RelationServlet extends HttpServlet
 
                 try
                 {
+
                         conn.close();
+
                 }catch(SQLException se)
                 {
+
                         se.printStackTrace();
+
                 }
                 conn = null;
 
