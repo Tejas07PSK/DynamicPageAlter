@@ -37,7 +37,7 @@ public class Table implements Serializable
 
         }
 
-        public void fillHashMap(String [] col_nms_typs)
+        synchronized public void fillHashMap(String [] col_nms_typs)
         {
 
                 for(String var : col_nms_typs)
@@ -49,7 +49,7 @@ public class Table implements Serializable
 
         }
 
-        public Table getSing_obj()
+        synchronized public Table getSing_obj()
         {
 
                 if (sing_obj == null)
@@ -58,49 +58,49 @@ public class Table implements Serializable
 
         }
 
-        public void setTableName(String tab_name)
+        synchronized public void setTableName(String tab_name)
         {
 
                 this.tab_name = tab_name;
 
         }
 
-        public String getTableName()
+        synchronized public String getTableName()
         {
 
                 return (tab_name);
 
         }
 
-        public Set getEntries()
+        synchronized public Set getEntries()
         {
 
                 return (row_nm_typ.entrySet());
 
         }
 
-        public Set getKeys()
+        synchronized public Set getKeys()
         {
 
                 return (row_nm_typ.keySet());
 
         }
 
-        public Collection getValues()
+        synchronized public Collection getValues()
         {
 
                 return (row_nm_typ.values());
 
         }
 
-        public int getHmpSize()
+        synchronized public int getHmpSize()
         {
 
                 return (row_nm_typ.size());
 
         }
 
-        public void emptyHshmp()
+        synchronized public void emptyHshmp()
         {
 
                 row_nm_typ.clear();
@@ -108,21 +108,21 @@ public class Table implements Serializable
 
         }
 
-        private boolean checkIfKeyExists(String key)
+        synchronized private boolean checkIfKeyExists(String key)
         {
 
                 return (row_nm_typ.containsKey(key));
 
         }
 
-        public boolean checkIfValueExists(String val)
+        synchronized public boolean checkIfValueExists(String val)
         {
 
                 return (row_nm_typ.containsValue(val));
 
         }
 
-        public String getValueForKey(String key)
+        synchronized public String getValueForKey(String key)
         {
 
                 if (checkIfKeyExists(key))
@@ -133,14 +133,14 @@ public class Table implements Serializable
 
         }
 
-        public boolean checkIfHsmpIsEmpty()
+        synchronized public boolean checkIfHsmpIsEmpty()
         {
 
                 return (row_nm_typ.isEmpty());
 
         }
 
-        public void insertIntoHsmp(String key, String val)
+        synchronized private void insertIntoHsmp(String key, String val)
         {
 
                 System.out.println("Previous mapped value for Key - " + key + " : " + row_nm_typ.put(key, val));
@@ -148,7 +148,7 @@ public class Table implements Serializable
 
         }
 
-        public void deleteEntryInHsmp(String key, String val)
+        synchronized public void deleteEntryInHsmp(String key, String val)
         {
 
                 if (row_nm_typ.remove(key, val))
@@ -158,7 +158,7 @@ public class Table implements Serializable
 
         }
 
-        public void modifyEntryInHsmp(String key, String val)
+        synchronized public void modifyEntryInHsmp(String key, String val)
         {
 
                 if (checkIfKeyExists(key))
