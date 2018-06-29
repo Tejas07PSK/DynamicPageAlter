@@ -37,13 +37,13 @@ public class Table implements Serializable
 
         }
 
-        private void fillHashMap(String [] col_nms_typs)
+        public void fillHashMap(String [] col_nms_typs)
         {
 
                 for(String var : col_nms_typs)
                 {
 
-                        row_nm_typ.put((var.split("-"))[0], (var.split("-"))[1]);
+                        insertIntoHsmp((var.split("-"))[0], (var.split("-"))[1]);
 
                 }
 
@@ -55,6 +55,20 @@ public class Table implements Serializable
                 if (sing_obj == null)
                         sing_obj = new Table();
                 return (sing_obj);
+
+        }
+
+        public void setTableName(String tab_name)
+        {
+
+                this.tab_name = tab_name;
+
+        }
+
+        public String getTableName()
+        {
+
+                return (tab_name);
 
         }
 
