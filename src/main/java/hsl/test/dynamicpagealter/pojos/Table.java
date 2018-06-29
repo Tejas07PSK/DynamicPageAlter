@@ -108,6 +108,13 @@ public class Table implements Serializable
         {
 
                 return (row_nm_typ.get(key));
+
         }
 
+        public boolean checkIfHsmpIsEmpty()
+        {
+
+                return (row_nm_typ.isEmpty());
+
+        }
 }
