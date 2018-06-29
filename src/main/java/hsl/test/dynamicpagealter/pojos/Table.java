@@ -107,8 +107,11 @@ public class Table implements Serializable
 
         public String getValueForKey(String key)
         {
-
-                return (row_nm_typ.get(key));
+                if (checkIfKeyExists(key))
+                        return (row_nm_typ.get(key));
+                else
+                        System.out.println("Key : " + key + "doesnot exist!!");
+                        return (null);
 
         }
 
@@ -137,10 +140,11 @@ public class Table implements Serializable
 
         }
 
-        public void modifyEntryInHsmp(String key)
+        public void modifyEntryInHsmp(String key, String val)
         {
 
-                row_nm_typ.replace()
+                if (row_nm_typ.replace(key, val) == val)
+
 
         }
 
