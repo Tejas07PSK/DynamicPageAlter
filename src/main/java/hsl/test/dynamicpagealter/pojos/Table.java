@@ -17,6 +17,7 @@ package hsl.test.dynamicpagealter.pojos;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Set;
 
 public class Table implements Serializable
 {
@@ -24,9 +25,7 @@ public class Table implements Serializable
         private static final long serialVersionUID = 1L;
 
         private final String tab_name;
-        private final HashMap var_nm_typ = new HashMap <String, String> ();
-
-        private Table(){}
+        private final HashMap<String, String> row_nm_typ = new HashMap <> ();
 
         private Table(String tb)
         {
@@ -35,12 +34,30 @@ public class Table implements Serializable
 
         }
 
-        public Table(String tb, String [] col_nms, String [] col_types)
+        public Table(String tb, String [] col_nms_typs)
         {
 
-            this( tb );
-            
+            this(tb);
+            fillHashMap(col_nms_typs);
 
+        }
+
+        private void fillHashMap(String [] col_nms_typs)
+        {
+                for(String var : col_nms_typs)
+                {
+                        row_nm_typ.put((var.split("-"))[0], (var.split("-"))[1]);
+                }
+        }
+
+        public Set getEntries()
+        {
+                return (row_nm_typ.entrySet());
+        }
+        
+        public int getHmpSize()
+        {
+                return (row_nm_typ.size());
         }
 
 }
