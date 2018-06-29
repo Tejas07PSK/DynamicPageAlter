@@ -126,7 +126,7 @@ public class Table implements Serializable
         public void insertIntoHsmp(String key, String val)
         {
 
-                row_nm_typ.put(key, val);
+                System.out.println("Previous mapped value for Key - " + key + " : " + row_nm_typ.put(key, val));
                 System.out.println("Key-Value pair successfully inserted!!");
 
         }
@@ -144,8 +144,10 @@ public class Table implements Serializable
         public void modifyEntryInHsmp(String key, String val)
         {
 
-                if (row_nm_typ.replace(key, val) == val)
-
+                if (checkIfKeyExists(key))
+                        row_nm_typ.replace(key, val);
+                else
+                        System.out.println("Key does not exist in Hash-Map!!");
 
         }
 
