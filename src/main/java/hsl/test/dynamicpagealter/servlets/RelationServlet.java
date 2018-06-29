@@ -23,12 +23,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Random;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+
+import hsl.test.dynamicpagealter.pojos.Table;
 
 @WebServlet(description = "Servlet for managing tables on RDBMS", urlPatterns = { "/relServlet" })
 public class RelationServlet extends HttpServlet
@@ -57,6 +61,36 @@ public class RelationServlet extends HttpServlet
                         e.printStackTrace();
                 }
 
+        }
+
+        @Override
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+        {
+                response.setContentType ("text");
+                response.setCharacterEncoding ("UTF-8");
+                response.setBufferSize (8192);
+                PrintWriter out = response.getWriter ();
+                Table tab = Table.getSing_obj();
+                tab.setTableName(request.getParameter("tab_nme"));
+                tab.fillHashMap((request.getParameter("tab_type_inf")).split(","));
+                StringBuilder query = new StringBuilder();
+                query.append("CREATE TABLE ");
+                query.append(request.getParameter("tab_nme"));
+                query.append(" (");
+                Iterator i = (tab.getEntries()).iterator();
+                while (i.hasNext())
+                {
+                        Map.Entry me = (Map.Entry)i.next();
+                        query.append(me.getKey());
+                        query.append(me.getValue());
+                        query.append(",");
+                }
+                query.append("PRIMARY KEY ( id ))");
+
+                out.print ();
+
+                out.flush ();
+                out.close ();
         }
 
         private static void startDBConnection()
