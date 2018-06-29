@@ -104,4 +104,10 @@ public class Table implements Serializable
 
         }
 
+        public String getValueForKey(String key)
+        {
+
+                return (row_nm_typ.get(key));
+        }
+
 }
