@@ -93,6 +93,42 @@ public class RelationServlet extends HttpServlet
                 out.close ();
         }
 
+        private boolean createTable(String sql)
+        {
+
+                Statement smt = null;
+                try
+                {
+                        smt = conn.createStatement();
+                        smt.executeUpdate(sql);
+                        smt.close();
+                        System.out.println("Created table in given database...");
+                }
+                catch(SQLException se)
+                {
+                        se.printStackTrace();
+                        System.out.println("ERROR!!!");
+                }
+                catch(Exception e)
+                {
+                        e.printStackTrace();
+                        System.out.println("ERROR!!!");
+                }
+                finally
+                {
+                    try
+                    {
+                            if(smt!=null)
+                            smt.close();
+                    }
+                    catch(SQLException se2)
+                    {
+                            se2.printStackTrace();
+                    }
+                }
+
+        }
+
         private static void startDBConnection()
         {
 
