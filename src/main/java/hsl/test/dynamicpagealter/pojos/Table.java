@@ -87,6 +87,7 @@ public class Table implements Serializable
         {
 
                 row_nm_typ.clear();
+                System.out.println("Hash-Map Cleaned Successfully!!");
 
         }
 
@@ -117,4 +118,21 @@ public class Table implements Serializable
                 return (row_nm_typ.isEmpty());
 
         }
+
+        public void insertIntoHsmp(String key, String val)
+        {
+
+                row_nm_typ.put(key, val);
+                System.out.println("Key-Value Pair Successfully Inserted!!");
+
+        }
+
+        public void deleteEntryInHsmp(String key, String val)
+        {
+
+                row_nm_typ.remove(key, val);
+                System.out.println("Entry Successfully Removed from Hash-Map!!");
+
+        }
+
 }
