@@ -49,7 +49,7 @@ public class Table implements Serializable
 
         }
 
-        synchronized public Table getSing_obj()
+        synchronized public static Table getSing_obj()
         {
 
                 if (sing_obj == null)
