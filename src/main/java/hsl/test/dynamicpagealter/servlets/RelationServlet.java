@@ -117,7 +117,7 @@ public class RelationServlet extends HttpServlet
 
         }
 
-        private String retrieveTableNamesFromSchema(String sql)
+        private String retrieveTableNamesFromSchema(String sql, String sch_nme)
         {
 
                 StringBuilder result = new StringBuilder();
@@ -153,8 +153,13 @@ public class RelationServlet extends HttpServlet
 
                         }
                         else
+                        {
 
-                        System.out.println("Created table in given database...");
+                                result.append("No tables found in schema : " + sch_nme);
+                                rs.close();
+
+                        }
+                        System.out.println("Retrieval Successful!!");
                         stat = true;
 
                 }
@@ -175,22 +180,19 @@ public class RelationServlet extends HttpServlet
                 finally
                 {
 
-                        try
-                        {
+                        try {
 
-                                if(smt!=null)
+                                if (smt != null)
                                         smt.close();
 
-                        }
-                        catch(SQLException se2)
-                        {
+                        } catch (SQLException se2) {
 
                                 se2.printStackTrace();
 
                         }
 
                 }
-                return (stat);
+                return (result.toString());
 
         }
 
