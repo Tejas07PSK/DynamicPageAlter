@@ -68,13 +68,22 @@ public class RelationServlet extends HttpServlet
         }
 
         @Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+        {
+
+                response.setContentType("text");
+                response.setCharacterEncoding();
+
+        }
+
+        @Override
         protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
         {
 
-                response.setContentType ("text");
-                response.setCharacterEncoding ("UTF-8");
-                response.setBufferSize (8192);
-                PrintWriter out = response.getWriter ();
+                response.setContentType("text");
+                response.setCharacterEncoding("UTF-8");
+                response.setBufferSize(8192);
+                PrintWriter out = response.getWriter();
                 Table tab = Table.getSing_obj();
                 tab.setTableName(request.getParameter("tab_nme"));
                 tab.fillHashMap((request.getParameter("tab_type_inf")).split(","));
