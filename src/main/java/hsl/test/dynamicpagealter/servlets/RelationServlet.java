@@ -120,15 +120,14 @@ public class RelationServlet extends HttpServlet
         private String retrieveTableNamesFromSchema(String sql)
         {
 
-                StringBuilder result = "";
+                StringBuilder result = new StringBuilder();
                 boolean stat = false;
                 Statement smt = null;
-                ResultSet rs = null;
                 try
                 {
 
                         smt = conn.createStatement();
-                        rs = smt.executeQuery(sql);
+                        ResultSet rs = smt.executeQuery(sql);
                         if (rs.isBeforeFirst())
                         {
 
@@ -150,8 +149,11 @@ public class RelationServlet extends HttpServlet
                                         }
 
                                 }
+                                rs.close();
 
                         }
+                        else
+
                         System.out.println("Created table in given database...");
                         stat = true;
 
