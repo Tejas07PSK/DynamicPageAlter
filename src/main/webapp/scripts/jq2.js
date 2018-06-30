@@ -33,11 +33,19 @@ $(document).ready(function(){
                                             xhr.overrideMimeType('text');
 
                                      },
-                dataFilter : function (respdata, type)
-                {
-                        console.log()
-                        var str_arr = respdata.split("-");
-                },
+                        dataFilter : function (respdata, type)
+                                     {
+
+                                            console.log(String(type))
+                                            var str_arr = respdata.split("-");
+                                            var new_str = "";
+                                            for(i=0; i < str_arr.length; i++)
+                                            {
+                                                    new_str += str_arr[i] + "<br/>";
+                                            }
+                                            return (new_str)
+
+                                     },
                 success : function (result,status,xhr)
                 {
                     $("span#output").html($("span#output").html()+"<br/>"+"SUCCESS;"+"<br/>"+"statusText : "+status+"<br/>"+"statusCode : "+xhr.status+"<br/>"+"readyState : "+xhr.readyState+"<br/>"+"response : "+JSON.stringify(result)+"<br/>");
