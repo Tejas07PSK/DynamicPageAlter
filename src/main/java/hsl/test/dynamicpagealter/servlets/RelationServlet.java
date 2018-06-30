@@ -50,7 +50,7 @@ public class RelationServlet extends HttpServlet
         public void init()
         {
 
-                if(conn == null)
+                if (conn == null)
                         startDBConnection();
                 try
                 {
@@ -59,7 +59,7 @@ public class RelationServlet extends HttpServlet
                         ip = InetAddress.getLocalHost();
                         ipadd = ip.getHostAddress();
 
-                }catch (UnknownHostException e)
+                }catch(UnknownHostException e)
                 {
 
                         e.printStackTrace();
@@ -129,8 +129,8 @@ public class RelationServlet extends HttpServlet
                 }
                 else
                         out.print ("Failed to create table!!");
-                out.flush ();
-                out.close ();
+                out.flush();
+                out.close();
 
         }
 
@@ -147,7 +147,7 @@ public class RelationServlet extends HttpServlet
                         if (rs.isBeforeFirst())
                         {
 
-                                while(rs.next())
+                                while (rs.next())
                                 {
 
                                         result.append(rs.getString("table_name"));
@@ -248,7 +248,7 @@ public class RelationServlet extends HttpServlet
                         try
                         {
 
-                                if(smt!=null)
+                                if (smt!=null)
                                    smt.close();
 
                         }
@@ -298,7 +298,7 @@ public class RelationServlet extends HttpServlet
                 finally
                 {
 
-                        if(conn != null)
+                        if (conn != null)
                                 System.out.println("Connection Successful!!");
                         else
                         {
