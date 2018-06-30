@@ -13,7 +13,7 @@ $(document).ready(function(){
 
             console.log(tab_nm);
             console.log(tab_det);
-            
+
         });
 
 });
