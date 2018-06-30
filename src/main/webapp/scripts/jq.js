@@ -6,6 +6,11 @@
 
 $(document).ready(function(){
 
-        $("span#tab_inp_frm").children("button")
+        $("span#tab_inp_frm").children("button").click(function(){
+
+            tab_nm = ($("span#tab_inp_frm").children("input").val()).trim();
+            tab_det = ($("span#tab_inp_frm").children("textarea").val()).trim();
+
+        });
 
 });
