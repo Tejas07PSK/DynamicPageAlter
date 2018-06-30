@@ -72,7 +72,13 @@ public class RelationServlet extends HttpServlet
         {
 
                 response.setContentType("text");
-                response.setCharacterEncoding();
+                response.setCharacterEncoding("UTF-8");
+                response.setBufferSize(8192);
+                PrintWriter out = response.getWriter();
+                StringBuilder query = new StringBuilder();
+                query.append("SELECT table_name FROM information_schema.tables where table_schema=\'");
+                query.append(request.getParameter("sch_nme"));
+                query.append("\'");
 
         }
 
