@@ -121,7 +121,6 @@ public class RelationServlet extends HttpServlet
         {
 
                 StringBuilder result = new StringBuilder();
-                boolean stat = false;
                 Statement smt = null;
                 try
                 {
@@ -160,7 +159,6 @@ public class RelationServlet extends HttpServlet
 
                         }
                         System.out.println("Retrieval Successful!!");
-                        stat = true;
 
                 }
                 catch(SQLException se)
@@ -180,12 +178,15 @@ public class RelationServlet extends HttpServlet
                 finally
                 {
 
-                        try {
+                        try
+                        {
 
                                 if (smt != null)
                                         smt.close();
 
-                        } catch (SQLException se2) {
+                        }
+                        catch (SQLException se2)
+                        {
 
                                 se2.printStackTrace();
 
