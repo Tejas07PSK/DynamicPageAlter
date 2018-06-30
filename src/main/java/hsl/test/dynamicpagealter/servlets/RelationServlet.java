@@ -103,6 +103,7 @@ public class RelationServlet extends HttpServlet
 
                         Map.Entry me = (Map.Entry)i.next();
                         query.append(me.getKey());
+                        query.append(" ");
                         query.append(me.getValue());
                         query.append(",");
 
