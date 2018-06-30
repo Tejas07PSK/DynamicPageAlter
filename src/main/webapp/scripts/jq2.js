@@ -6,7 +6,9 @@
 
 $(document).ready(function(){
 
-        aux();
+        //aux();
+        chk_chg(0);
+        chk_chg(1);
 
         function aux ()
         {

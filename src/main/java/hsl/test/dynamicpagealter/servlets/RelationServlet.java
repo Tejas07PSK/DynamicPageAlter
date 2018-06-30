@@ -82,7 +82,7 @@ public class RelationServlet extends HttpServlet
                         cng --;
                 while (true)
                 {
-
+                        System.out.println("ON");
                         if (change > cng)
                                 break;
 
