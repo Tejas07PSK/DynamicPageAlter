@@ -11,6 +11,9 @@ $(document).ready(function(){
             tab_nm = ($("span#tab_inp_frm").children("input").val()).trim();
             tab_det = ($("span#tab_inp_frm").children("textarea").val()).trim();
 
+            console.log(tab_nm);
+            console.log(tab_det);
+            
         });
 
 });
