@@ -72,11 +72,21 @@ public class RelationServlet extends HttpServlet
         protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
         {
 
+                int cng = change;
                 response.setContentType("text");
                 response.setCharacterEncoding("UTF-8");
                 response.setBufferSize(8192);
                 PrintWriter out = response.getWriter();
                 String query = "SELECT table_name FROM information_schema.tables where table_schema=\'" + request.getParameter("sch_nme") + "\'";
+                if (Integer.valueOf(request.getParameter("iter")) == 0)
+                        cng --;
+                while (true)
+                {
+
+                        if (change > cng)
+                                break;
+
+                }
                 out.print(retrieveTableNamesFromSchema(query, request.getParameter("sch_nme")));
                 out.flush();
                 out.close();
