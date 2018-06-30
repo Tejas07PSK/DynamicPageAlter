@@ -75,10 +75,10 @@ public class RelationServlet extends HttpServlet
                 response.setCharacterEncoding("UTF-8");
                 response.setBufferSize(8192);
                 PrintWriter out = response.getWriter();
-                StringBuilder query = new StringBuilder();
-                query.append("SELECT table_name FROM information_schema.tables where table_schema=\'");
-                query.append(request.getParameter("sch_nme"));
-                query.append("\'");
+                String query = "SELECT table_name FROM information_schema.tables where table_schema=\'" + request.getParameter("sch_nme") + "\'";
+                out.print(retrieveTableNamesFromSchema(query, request.getParameter("sch_nme")));
+                out.flush();
+                out.close();
 
         }
 
