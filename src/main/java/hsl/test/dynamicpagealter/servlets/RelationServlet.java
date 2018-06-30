@@ -41,6 +41,7 @@ public class RelationServlet extends HttpServlet
         private static final long serialVersionUID = 1L;
         private static Connection conn = null;
         private static InetAddress ip ;
+        private static int change = 0;
 
         @SuppressWarnings("unused")
         private static String ipadd = "" ;
@@ -110,7 +111,12 @@ public class RelationServlet extends HttpServlet
                 }
                 query.append("PRIMARY KEY ( id ))");
                 if (createTable(query.toString()))
-                        out.print ("Table successfully created!!");
+                {
+
+                        out.print("Table successfully created!!");
+                        change++;
+
+                }
                 else
                         out.print ("Failed to create table!!");
                 out.flush ();
