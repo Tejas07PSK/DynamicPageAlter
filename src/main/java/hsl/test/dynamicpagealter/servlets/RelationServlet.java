@@ -252,7 +252,7 @@ public class RelationServlet extends HttpServlet
         {
 
                 final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-                final String DB_URL = "jdbc:mysql://"+ipadd+":3306/coudApp";
+                final String DB_URL = "jdbc:mysql://"+ipadd+":3306/DynamicPageAlter";
 
                 final String USER = "palashsarkaradmin";
                 final String PASS = "tejas!!";
