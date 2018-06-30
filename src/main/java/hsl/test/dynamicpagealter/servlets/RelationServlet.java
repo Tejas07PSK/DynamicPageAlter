@@ -117,6 +117,81 @@ public class RelationServlet extends HttpServlet
 
         }
 
+        private String retrieveTableNamesFromSchema(String sql)
+        {
+
+                StringBuilder result = "";
+                boolean stat = false;
+                Statement smt = null;
+                ResultSet rs = null;
+                try
+                {
+
+                        smt = conn.createStatement();
+                        rs = smt.executeQuery(sql);
+                        if (rs.isBeforeFirst())
+                        {
+
+                                while(rs.next())
+                                {
+
+                                        result.append(rs.getString("table_name"));
+                                        if (rs.isLast())
+                                        {
+
+                                                break;
+
+                                        }
+                                        else
+                                        {
+
+                                                result.append("-");
+
+                                        }
+
+                                }
+
+                        }
+                        System.out.println("Created table in given database...");
+                        stat = true;
+
+                }
+                catch(SQLException se)
+                {
+
+                        se.printStackTrace();
+                        System.out.println("ERROR!!!");
+
+                }
+                catch(Exception e)
+                {
+
+                        e.printStackTrace();
+                        System.out.println("ERROR!!!");
+
+                }
+                finally
+                {
+
+                        try
+                        {
+
+                                if(smt!=null)
+                                        smt.close();
+
+                        }
+                        catch(SQLException se2)
+                        {
+
+                                se2.printStackTrace();
+
+                        }
+
+                }
+                return (stat);
+
+        }
+
         private boolean createTable(String sql)
         {
 
