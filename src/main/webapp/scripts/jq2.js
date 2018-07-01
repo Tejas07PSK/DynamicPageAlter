@@ -6,21 +6,7 @@
 
 $(document).ready(function(){
 
-        //aux();
         chk_chg(0);
-        chk_chg(1);
-
-        function aux ()
-        {
-            var cnt = 0
-            while (true)
-            {
-
-                chk_chg(cnt);
-                cnt = cnt + 1;
-
-            }
-        }
 
         function chk_chg (cnt)
         {
@@ -76,13 +62,15 @@ $(document).ready(function(){
                         error : function (xhr,status,error)
                                 {
 
-                                        alert("Details : \n" + xhr.readyState + "\n" + xhr.status + "\n" + status + "\n" + xhr.responseText + "\n" + error);
+                                        console.log("Details : \n" + xhr.readyState + "\n" + xhr.status + "\n" + status + "\n" + xhr.responseText + "\n" + error);
 
                                 },
                         complete : function (xhr,status)
                                    {
 
-                                       alert("Details : \n" + xhr.readyState + "\n" + xhr.status + "\n" + status + "\n" + xhr.responseText);
+                                       console.log("Details : \n" + xhr.readyState + "\n" + xhr.status + "\n" + status + "\n" + xhr.responseText);
+                                       cnt += 1;
+                                       chk_chg(cnt);
 
                                    },
                         headers : {
